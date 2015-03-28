@@ -34,7 +34,7 @@ public class MainActivity extends SherlockFragmentActivity {
 
         // Get location
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        LocationListener locationListener = new MyLocationListener();
+        LocationListener locationListener = new MyLocationListener(MainActivity.this.getApplicationContext());
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
 
     }
