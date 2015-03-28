@@ -40,6 +40,7 @@ public class App extends Application {
     RestAdapter restAdapter = new RestAdapter.Builder()
         .setLogLevel(RestAdapter.LogLevel.FULL)
         .setEndpoint("https://api.wallyjobs.com")
+        //.setEndpoint("http://private-98213-hackathongi2015.apiary-mock.com")
         .setClient(new OkClient(client))
         .setConverter(new GsonConverter(gson))
         .build();
