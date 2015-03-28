@@ -3,6 +3,9 @@ package org.hackathongi2015.app.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -19,7 +22,7 @@ public class LandingPage extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     // setTheme(SampleList.THEME);
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.job_desc);
+    setContentView(R.layout.landing_page);
 
     Bundle extras = getIntent().getExtras();
     if (extras == null) {
@@ -28,25 +31,14 @@ public class LandingPage extends Activity {
     }
 
     View vi = this.getWindow().getDecorView();
-    TextView title =(TextView)vi.findViewById(R.id.title);
-    ImageView iview = (ImageView)vi.findViewById(R.id.imageView);
-    TextView description =(TextView)vi.findViewById(R.id.description);
-    TextView city =(TextView)vi.findViewById(R.id.city);
-    TextView date =(TextView)vi.findViewById(R.id.date);
-
-    Date d;
-    try {
-      d = Global.FULL_TIME_DATE_FORMAT.parse(extras.getString("JOB_DATE"));
-    } catch (Exception e) {
-      d = new Date();
-    }
+    WebView webview =(WebView)vi.findViewById(R.id.webview);
+    WebSettings webSettings = webview.getSettings();
+    webSettings.setJavaScriptEnabled(true);
+    webview.setWebViewClient(new WebViewClient());
 
     // Assign the appropriate data from our task object above
-    title.setText(extras.getString("JOB_TITLE"));
-    description.setText(extras.getString("JOB_DESC"));
-    ImageLoader.getInstance().displayImage(extras.getString("JOB_IMAGE_URL"), iview);
-    city.setText(extras.getString("JOB_CITY"));
-    date.setText(Global.DATE_ONLY_FORMAT.format(d));
+    String url = extras.getString("JOB_URL");
+    webview.loadUrl(url);
   }
 
 }
