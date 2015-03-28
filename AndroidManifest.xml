@@ -29,6 +29,10 @@
             android:name="org.hackathongi2015.app.activity.JobDescription"
             android:label="@string/app_name">
         </activity>
+        <activity
+            android:name="org.hackathongi2015.app.activity.LandingPage"
+            android:label="@string/app_name">
+        </activity>
 
     </application>
 
