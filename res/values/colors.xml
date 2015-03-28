@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="wallyRed">#D92316</color>
+  <color name="insideWallyRed">#FFFFFF</color>
+  <color name="background">#feddccca</color>
+</resources>

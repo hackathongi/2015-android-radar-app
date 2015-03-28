@@ -48,8 +48,9 @@
       android:ellipsize="none"
       />
   <Button
-      android:layout_width="118dp"
+      android:layout_width="137dp"
       android:layout_height="wrap_content"
       android:text="@string/Apply"
-      android:id="@+id/btn_apply" android:layout_gravity="center_horizontal"/>
+      android:background="@drawable/button_background"
+      android:id="@+id/btn_apply" android:layout_gravity="center_horizontal" android:textColor="@color/insideWallyRed"/>
 </LinearLayout>

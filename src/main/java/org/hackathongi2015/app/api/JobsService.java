@@ -10,6 +10,6 @@ import java.util.List;
  * Created by imartin on 28/03/15.
  */
 public interface JobsService {
-    @GET("/api/jobs")
+    @GET("/jobs")
     List<JSON.Job> listJobs();
 }

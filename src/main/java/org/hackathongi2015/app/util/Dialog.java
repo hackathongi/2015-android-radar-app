@@ -27,12 +27,35 @@ public class Dialog {
         alertDialog.setMessage(e.msg);
 
         // Setting OK Button
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                rr.send(0, null);
-            }
-        });
-        alertDialog.show();
+        if (rr != null) {
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    if (rr != null) rr.send(0, null);
+                }
+            });
+            alertDialog.show();
+        }
+
     }
 
+    public static void onError(String title, Activity a, String msg, final ResultReceiver rr) {
+        AlertDialog alertDialog = new AlertDialog.Builder(a).create();
+
+        // Setting Dialog Title
+        alertDialog.setTitle(title);
+
+        // Setting Dialog Message
+        alertDialog.setMessage(msg);
+
+        // Setting OK Button
+        if (rr != null) {
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    if (rr != null) rr.send(0, null);
+                }
+            });
+            alertDialog.show();
+
+        }
+    }
 }
