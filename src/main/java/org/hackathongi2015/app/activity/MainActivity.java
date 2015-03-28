@@ -2,6 +2,7 @@ package org.hackathongi2015.app.activity;
 
 import android.content.Context;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -9,11 +10,13 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import org.hackathongi2015.R;
 import org.hackathongi2015.app.adapter.CollectionPagerAdapter;
+import org.hackathongi2015.app.listener.MyLocationListener;
 
 public class MainActivity extends SherlockFragmentActivity {
 
     CollectionPagerAdapter mDemoCollectionPagerAdapter;
     ViewPager mViewPager;
+    LocationManager mLocationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +33,9 @@ public class MainActivity extends SherlockFragmentActivity {
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
 
         // Get location
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-        if (location != null) {
-            Toast.makeText(this, location.getLatitude() + ", " + location.getLongitude(), Toast.LENGTH_SHORT).show();
-        }
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        LocationListener locationListener = new MyLocationListener();
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
 
     }
 }
