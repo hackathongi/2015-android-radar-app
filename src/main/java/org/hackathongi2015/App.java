@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.res.Configuration;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import org.hackathongi2015.app.api.JobsService;
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
@@ -32,6 +35,18 @@ public class App extends Application {
         .build();
 
     mREST = restAdapter.create(JobsService.class);
+
+    DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+        .cacheInMemory(true)
+        .cacheOnDisk(true)
+        .build();
+
+    ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
+        .defaultDisplayImageOptions(defaultOptions)
+        .build();
+
+    ImageLoader.getInstance().init(config);
+
   }
 
   @Override
