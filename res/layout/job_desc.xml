@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
+
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_marginLeft="0dp"
+      android:layout_alignParentTop="true" android:layout_marginTop="0dp">
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView" android:maxHeight="80px" android:maxWidth="80px" android:minHeight="80px"
+        android:minWidth="80px" android:layout_centerVertical="true"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imageView">
+      <TextView
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:text="New Text"
+          android:id="@+id/title"/>
+      <RelativeLayout
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/city" android:layout_alignParentLeft="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/date" android:layout_alignParentRight="true"/>
+      </RelativeLayout>
+    </LinearLayout>
+  </RelativeLayout>
+  <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="New Text"
+      android:id="@+id/description"
+      android:lines="2"
+      android:ellipsize="none"
+      />
+  <Button
+      android:layout_width="118dp"
+      android:layout_height="wrap_content"
+      android:text="@string/Apply"
+      android:id="@+id/btn_apply" android:layout_gravity="center_horizontal"/>
+</LinearLayout>

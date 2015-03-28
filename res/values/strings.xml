@@ -9,5 +9,6 @@
     <string name="add_task">Add Task</string><string name="date_created">Date created:</string><string name="task_text">Text:</string><string name="date_limit">Date limit:</string>
     <string name="button_set">Set</string>
     <string name="time_limit">Time limit:</string><string name="button_save">Save</string>
+    <string name="Apply">Apply</string>
 
 </resources>

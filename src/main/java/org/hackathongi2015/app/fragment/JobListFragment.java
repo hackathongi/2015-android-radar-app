@@ -2,6 +2,7 @@ package org.hackathongi2015.app.fragment;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -15,6 +16,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import org.hackathongi2015.App;
 import org.hackathongi2015.R;
+import org.hackathongi2015.app.activity.JobDescription;
 import org.hackathongi2015.app.util.Global;
 import org.hackathongi2015.app.util.JSON;
 import org.hackathongi2015.app.util.JSON.Job;
@@ -37,12 +39,16 @@ public class JobListFragment extends ListFragment  {
   @Override
   public void onListItemClick(ListView l, View v, int position, long id) {
     super.onListItemClick(l, v, position, id);
-    Context context = getActivity().getApplicationContext();
-    CharSequence title = ((Job) l.getItemAtPosition(position)).title;
-    int duration = Toast.LENGTH_LONG;
 
-    Toast toast = Toast.makeText(context, title, duration);
-    toast.show();
+    JSON.Job job = mAdapter.getItem(position);
+
+    Intent intent = new Intent(getActivity(), JobDescription.class);
+    intent.putExtra("JOB_TITLE", job.title);
+    intent.putExtra("JOB_DESC", job.description);
+    intent.putExtra("JOB_IMAGE_URL", job.picture_url);
+    intent.putExtra("JOB_CITY", job.city);
+    intent.putExtra("JOB_DATE", job.end_date);
+    startActivity(intent);
   }
 
   @Override
@@ -98,11 +104,6 @@ public class JobListFragment extends ListFragment  {
         }
       }
     }.execute();
-
-
-
-
-
   }
 }
 
