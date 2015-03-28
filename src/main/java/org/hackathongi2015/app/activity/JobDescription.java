@@ -1,8 +1,10 @@
 package org.hackathongi2015.app.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -21,7 +23,7 @@ public class JobDescription extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.job_desc);
 
-    Bundle extras = getIntent().getExtras();
+    final Bundle extras = getIntent().getExtras();
     if (extras == null) {
       this.finish();
       return;
@@ -47,6 +49,15 @@ public class JobDescription extends Activity {
     ImageLoader.getInstance().displayImage(extras.getString("JOB_IMAGE_URL"), iview);
     city.setText(extras.getString("JOB_CITY"));
     date.setText(Global.DATE_ONLY_FORMAT.format(d));
+
+    Button btn = (Button)vi.findViewById(R.id.btn_apply);
+    btn.setOnClickListener(new View.OnClickListener() {
+      public void onClick(View view) {
+        Intent intent = new Intent(JobDescription.this, LandingPage.class);
+        intent.putExtra("JOB_URL", extras.getString("JOB_JOB_URL"));
+        startActivity(intent);
+      }
+    });
   }
 
 }
