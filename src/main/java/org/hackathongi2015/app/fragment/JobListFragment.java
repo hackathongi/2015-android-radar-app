@@ -17,6 +17,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import org.hackathongi2015.App;
 import org.hackathongi2015.R;
 import org.hackathongi2015.app.activity.JobDescription;
+import org.hackathongi2015.app.util.Dialog;
 import org.hackathongi2015.app.util.Global;
 import org.hackathongi2015.app.util.JSON;
 import org.hackathongi2015.app.util.JSON.Job;
@@ -84,7 +85,7 @@ public class JobListFragment extends ListFragment  {
 
     new AsyncTask<Void, Void, List<Job>>() {
 
-      private Exception exception;
+      private Exception exception = null;
 
       @Override
       protected List<JSON.Job> doInBackground(Void ... params) {
@@ -98,11 +99,15 @@ public class JobListFragment extends ListFragment  {
 
       @Override
       protected void onPostExecute(List<JSON.Job> jobs) {
-        for (JSON.Job job : jobs) {
-          if (!mJobMap.containsKey(job.id)) {
-            mJobMap.put(job.id, true);
-            mAdapter.add(job);
+        if (jobs != null) {
+          for (JSON.Job job : jobs) {
+            if (!mJobMap.containsKey(job.id)) {
+              mJobMap.put(job.id, true);
+              mAdapter.add(job);
+            }
           }
+        } else {
+          Dialog.onError("Error in REST call", getActivity(), this.exception.getMessage(), null);
         }
       }
     }.execute();
