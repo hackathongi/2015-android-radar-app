@@ -1,11 +1,8 @@
 package org.hackathongi2015.app.fragment;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -13,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import org.hackathongi2015.App;
 import org.hackathongi2015.R;
 import org.hackathongi2015.app.activity.JobDescription;
@@ -23,8 +19,6 @@ import org.hackathongi2015.app.util.JSON;
 import org.hackathongi2015.app.util.JSON.Job;
 import retrofit.RetrofitError;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -74,16 +68,6 @@ public class JobListFragment extends ListFragment {
       setListAdapter(mAdapter);
     }
 
-
-    // getListView().setOnItemClickListener(this);
-
-  }
-
-  @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-  @Override
-  public void onResume() {
-    super.onResume();
-
     new AsyncTask<Void, Void, List<Job>>() {
 
       private Exception exception = null;
@@ -102,7 +86,7 @@ public class JobListFragment extends ListFragment {
       protected void onPostExecute(List<JSON.Job> jobs) {
         if (jobs != null) {
           for (JSON.Job job : jobs) {
-            if (!mJobMap.containsKey(job.id)) {
+            if (job!= null && !mJobMap.containsKey(job.id)) {
               mJobMap.put(job.id, true);
               mAdapter.add(job);
             }
@@ -112,7 +96,11 @@ public class JobListFragment extends ListFragment {
         }
       }
     }.execute();
+
+    // getListView().setOnItemClickListener(this);
+
   }
+
 }
 
 class JobsAdapter extends ArrayAdapter<Job> {
