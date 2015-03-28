@@ -10,38 +10,30 @@ import java.util.List;
  */
 public class JSON {
 
-    public static class Task {
-        public long id;
-        public String text;
-        public Date dateLimit;
-        public Date dateCreated;
-        public boolean completed;
+  public static class Job {
+    public Long id;
+    public String title;
+    public String description;
+    public String start_date;
+    public String end_date;
+    public String city;
+    public Float latitude;
+    public Float longitude;
+    public String picture_url;
+    public Long owner_id;
+  }
 
+  public static class Error {
+    String msg;
+  }
+
+  public static class JobList {
+    public List<Job> tasks;
+
+    public List<Job> getJob() {
+      return tasks;
     }
-
-    public static class Error {
-        public String msg;
-
-        public Error() {}
-
-        public Error(String s) {
-            msg = s;
-        }
-    }
-
-    public static class User {
-        public long id;
-        public String username;
-        public String email;
-    }
-
-    public static class TaskList {
-        public List<Task> tasks;
-
-        public List<Task> getTasks() {
-            return tasks;
-        }
-    }
+  }
 /*
   public static String toJSON(Object obj) throws IOException {
     StringWriter sw = new StringWriter();

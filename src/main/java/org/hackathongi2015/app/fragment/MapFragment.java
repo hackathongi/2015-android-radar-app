@@ -6,9 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import org.udg.pds.simpleapp_android.R;
-
+import org.hackathongi2015.R;
 
 public class MapFragment extends Fragment {
   public static final String ARG_OBJECT = "object";

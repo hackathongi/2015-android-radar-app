@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
  http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.udg.pds</groupId>
-    <artifactId>simpleapp-android</artifactId>
+    <groupId>org.hackathongi2015</groupId>
+    <artifactId>android-app</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>apk</packaging>
-    <name>Simple Application Example</name>
+    <name>Android app for hackthongi2015</name>
 
     <dependencies>
       <dependency>
@@ -24,7 +24,12 @@
             <version>r7</version>
         </dependency>
 
-      
+      <dependency>
+        <groupId>com.squareup.retrofit</groupId>
+        <artifactId>retrofit</artifactId>
+        <version>1.9.0</version>
+      </dependency>
+
     </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>

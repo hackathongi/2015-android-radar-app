@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.udg.pds.simpleapp_android"
+          package="org.hackathongi2015"
           android:versionCode="1"
           android:versionName="1.0">
 
@@ -13,7 +13,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".App">
         <activity
             android:name="org.hackathongi2015.app.activity.MainActivity"
             android:label="@string/app_name">
@@ -23,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <service android:name="org.hackathongi2015.app.service.RESTService"></service>
     </application>
 
 </manifest>

@@ -17,8 +17,6 @@ import android.os.ResultReceiver;
 // through the application
 public class Dialog {
 
-/*
-
     public static void onError(String title, Activity a, JSON.Error e, final ResultReceiver rr) {
         AlertDialog alertDialog = new AlertDialog.Builder(a).create();
 
@@ -36,5 +34,5 @@ public class Dialog {
         });
         alertDialog.show();
     }
-*/
+
 }

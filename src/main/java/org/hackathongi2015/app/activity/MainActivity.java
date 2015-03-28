@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import org.hackathongi2015.R;
 import org.hackathongi2015.app.adapter.CollectionPagerAdapter;
-import org.udg.pds.simpleapp_android.R;
 
 public class MainActivity extends SherlockFragmentActivity {
 
