@@ -21,6 +21,7 @@ public class JSON {
     public Float longitude;
     public String picture_url;
     public Long owner_id;
+    public String job_url;
   }
 
   public static class Error {
