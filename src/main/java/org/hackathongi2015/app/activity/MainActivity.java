@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 
+import android.view.MenuInflater;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
 import org.hackathongi2015.R;
 import org.hackathongi2015.app.adapter.CollectionPagerAdapter;
 import org.hackathongi2015.app.listener.MyLocationListener;
@@ -18,11 +20,10 @@ public class MainActivity extends SherlockFragmentActivity {
     CollectionPagerAdapter mDemoCollectionPagerAdapter;
     ViewPager mViewPager;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        // setTheme(SampleList.THEME);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_main);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.act_main);
 
         // ViewPager and its adapters use support library
         // fragments, so use getSupportFragmentManager.
@@ -52,14 +53,15 @@ public class MainActivity extends SherlockFragmentActivity {
         abar.addTab(abar.newTab().setText("Map").setTabListener(tabListener));
         mViewPager.setOnPageChangeListener(
 
-                new ViewPager.SimpleOnPageChangeListener() {
-                    @Override
-                    public void onPageSelected(int position) {
-                        // When swiping between pages, select the
-                        // corresponding tab.
-                        getSupportActionBar().setSelectedNavigationItem(position);
-                    }
-                });
+        new ViewPager.SimpleOnPageChangeListener() {
+          @Override
+          public void onPageSelected(int position) {
+            // When swiping between pages, select the
+            // corresponding tab.
+            getSupportActionBar().setSelectedNavigationItem(position);
+          }
+        });
+
 
         // Get location
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -68,4 +70,11 @@ public class MainActivity extends SherlockFragmentActivity {
 
 
     }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    // Inflate the menu items for use in the action bar
+    getSupportMenuInflater().inflate(R.menu.main_activity_actions, menu);
+    return super.onCreateOptionsMenu(menu);
+  }
 }
