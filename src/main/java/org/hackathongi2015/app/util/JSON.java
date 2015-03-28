@@ -20,7 +20,7 @@ public class JSON {
     public Float latitude;
     public Float longitude;
     public String picture_url;
-    public Long owner_id;
+    public JSON.Owner owner;
     public String job_url;
   }
 
@@ -34,6 +34,14 @@ public class JSON {
     public List<Job> getJob() {
       return tasks;
     }
+  }
+
+  public static class Owner {
+    public Long id;
+    public String name;
+    public String email;
+    public String token;
+    Integer role;
   }
 /*
   public static String toJSON(Object obj) throws IOException {

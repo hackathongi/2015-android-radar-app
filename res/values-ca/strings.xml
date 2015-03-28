@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WallyJobs</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Opcions</string>
+    <string name="email2">Email:</string>
+    <string name="id2">Id:</string>
+    <string name="button_set">Set</string>
+    <string name="time_limit">Data limit:</string>
+    <string name="button_save">Desar</string>
+    <string name="Apply">M\'apunto!</string>
+
+    <string name="job_list">Llistat d\'ofertes</string>
+    <string name="map">Mapa</string>
+
+    <string name="action_search">Buscar</string>
+    <string name="action_website">Web</string>
+
+</resources>

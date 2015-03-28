@@ -17,6 +17,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import org.hackathongi2015.App;
 import org.hackathongi2015.R;
 import org.hackathongi2015.app.activity.JobDescription;
+import org.hackathongi2015.app.util.Dialog;
 import org.hackathongi2015.app.util.Global;
 import org.hackathongi2015.app.util.JSON;
 import org.hackathongi2015.app.util.JSON.Job;
@@ -29,7 +30,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class JobListFragment extends ListFragment  {
+public class JobListFragment extends ListFragment {
 
   ArrayList<Job> mJobList = new ArrayList<Job>();
   HashMap<Long, Boolean> mJobMap = new HashMap<Long, Boolean>();
@@ -48,7 +49,8 @@ public class JobListFragment extends ListFragment  {
     intent.putExtra("JOB_IMAGE_URL", job.picture_url);
     intent.putExtra("JOB_CITY", job.city);
     intent.putExtra("JOB_DATE", job.end_date);
-    intent.putExtra("JOB_JOB_URL", job.job_url);
+    intent.putExtra("JOB_JOB_URL", "https://landing.wallyjobs.com/"+job.id);
+    intent.putExtra("JOB_NAME", job.owner.name);
 
     startActivity(intent);
   }
@@ -84,10 +86,10 @@ public class JobListFragment extends ListFragment  {
 
     new AsyncTask<Void, Void, List<Job>>() {
 
-      private Exception exception;
+      private Exception exception = null;
 
       @Override
-      protected List<JSON.Job> doInBackground(Void ... params) {
+      protected List<JSON.Job> doInBackground(Void... params) {
         try {
           return ((App) getActivity().getApplicationContext()).getREST().listJobs();
         } catch (RetrofitError e) {
@@ -98,11 +100,15 @@ public class JobListFragment extends ListFragment  {
 
       @Override
       protected void onPostExecute(List<JSON.Job> jobs) {
-        for (JSON.Job job : jobs) {
-          if (!mJobMap.containsKey(job.id)) {
-            mJobMap.put(job.id, true);
-            mAdapter.add(job);
+        if (jobs != null) {
+          for (JSON.Job job : jobs) {
+            if (!mJobMap.containsKey(job.id)) {
+              mJobMap.put(job.id, true);
+              mAdapter.add(job);
+            }
           }
+        } else {
+          Dialog.onError("Error in REST call", getActivity(), this.exception.getMessage(), null);
         }
       }
     }.execute();
@@ -122,24 +128,22 @@ class JobsAdapter extends ArrayAdapter<Job> {
   // This is the main function
   // It generates a View for each Task that we want to show in the list
   @Override
-  public View getView(int position, View convertView, ViewGroup parent)
-  {
+  public View getView(int position, View convertView, ViewGroup parent) {
     LinearLayout alertView;
     //Get the current alert object
     JSON.Job job = getItem(position);
 
     View vi = convertView;
     //Inflate the view if there is no other View (convertView) that the system gives us to "recycle"
-    if(convertView==null)
-    {
+    if (convertView == null) {
       vi = mInflater.inflate(R.layout.job_item, null);
     }
     //Get the text boxes
-    TextView title =(TextView)vi.findViewById(R.id.title);
-    ImageView iview = (ImageView)vi.findViewById(R.id.imageView);
-    TextView description =(TextView)vi.findViewById(R.id.description);
-    TextView city =(TextView)vi.findViewById(R.id.city);
-    TextView date =(TextView)vi.findViewById(R.id.date);
+    TextView title = (TextView) vi.findViewById(R.id.title);
+    ImageView iview = (ImageView) vi.findViewById(R.id.imageView);
+    TextView description = (TextView) vi.findViewById(R.id.description);
+    TextView city = (TextView) vi.findViewById(R.id.city);
+    TextView date = (TextView) vi.findViewById(R.id.date);
 
     Date d;
     try {

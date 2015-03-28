@@ -17,11 +17,11 @@ public class CollectionPagerAdapter extends FragmentStatePagerAdapter {
         Fragment fragment = null;
         switch (i%2) {
             case 0: {
-                fragment = new MapFragment();;
+                fragment = new JobListFragment();;
                 break;
             }
             case 1: {
-                fragment = new JobListFragment();;
+                fragment = new MapFragment();;
             }
         }
         return fragment;

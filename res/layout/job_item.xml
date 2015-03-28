@@ -2,28 +2,29 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content">
 
   <RelativeLayout
-      android:layout_width="fill_parent"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content">
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView" android:maxHeight="80px" android:maxWidth="80px" android:minHeight="80px"
-        android:minWidth="80px" android:layout_centerVertical="true"/>
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView"
+        android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/imageView">
       <TextView
-          android:layout_width="fill_parent"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="New Text"
-          android:id="@+id/title"/>
+          android:id="@+id/title" android:textStyle="bold"/>
       <TextView
-          android:layout_width="fill_parent"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="New Text"
           android:id="@+id/description"
@@ -31,8 +32,8 @@
           android:ellipsize="end"
           />
       <RelativeLayout
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent">
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" android:layout_gravity="bottom">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

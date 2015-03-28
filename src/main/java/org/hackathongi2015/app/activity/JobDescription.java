@@ -35,6 +35,7 @@ public class JobDescription extends Activity {
     TextView description =(TextView)vi.findViewById(R.id.description);
     TextView city =(TextView)vi.findViewById(R.id.city);
     TextView date =(TextView)vi.findViewById(R.id.date);
+    TextView name =(TextView)vi.findViewById(R.id.owner);
 
     Date d;
     try {
@@ -49,11 +50,12 @@ public class JobDescription extends Activity {
     ImageLoader.getInstance().displayImage(extras.getString("JOB_IMAGE_URL"), iview);
     city.setText(extras.getString("JOB_CITY"));
     date.setText(Global.DATE_ONLY_FORMAT.format(d));
+    name.setText(extras.getString("JOB_NAME"));
 
     Button btn = (Button)vi.findViewById(R.id.btn_apply);
     btn.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
-        Intent intent = new Intent(JobDescription.this, LandingPage.class);
+        Intent intent = new Intent(JobDescription.this, WallyWebView.class);
         intent.putExtra("JOB_URL", extras.getString("JOB_JOB_URL"));
         startActivity(intent);
       }
