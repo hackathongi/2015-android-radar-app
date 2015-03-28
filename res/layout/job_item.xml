@@ -8,8 +8,8 @@
       android:layout_width="fill_parent"
       android:layout_height="wrap_content">
     <ImageView
-        android:layout_width="80px"
-        android:layout_height="80px"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
         android:id="@+id/imageView" android:maxHeight="80px" android:maxWidth="80px" android:minHeight="80px"
         android:minWidth="80px" android:layout_centerVertical="true"/>
     <LinearLayout
@@ -26,7 +26,10 @@
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
           android:text="New Text"
-          android:id="@+id/description" android:lines="2"/>
+          android:id="@+id/description"
+          android:lines="2"
+          android:ellipsize="end"
+          />
       <RelativeLayout
           android:layout_width="fill_parent"
           android:layout_height="fill_parent">
