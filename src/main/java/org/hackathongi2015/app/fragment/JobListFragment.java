@@ -2,6 +2,7 @@ package org.hackathongi2015.app.fragment;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,9 +10,9 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.*;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import org.hackathongi2015.App;
 import org.hackathongi2015.R;
 import org.hackathongi2015.app.util.Global;
@@ -19,20 +20,37 @@ import org.hackathongi2015.app.util.JSON;
 import org.hackathongi2015.app.util.JSON.Job;
 import retrofit.RetrofitError;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
-public class JobListFragment extends ListFragment {
+public class JobListFragment extends ListFragment  {
 
   ArrayList<Job> mJobList = new ArrayList<Job>();
+  HashMap<Long, Boolean> mJobMap = new HashMap<Long, Boolean>();
   ArrayAdapter<Job> mAdapter;
   ViewGroup mContainer;
+
+  @Override
+  public void onListItemClick(ListView l, View v, int position, long id) {
+    super.onListItemClick(l, v, position, id);
+    Context context = getActivity().getApplicationContext();
+    CharSequence title = ((Job) l.getItemAtPosition(position)).title;
+    int duration = Toast.LENGTH_LONG;
+
+    Toast toast = Toast.makeText(context, title, duration);
+    toast.show();
+  }
 
   @Override
   public View onCreateView(LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
     mContainer = container;
     return super.onCreateView(inflater, container, savedInstanceState);
+
   }
 
   @Override
@@ -45,6 +63,7 @@ public class JobListFragment extends ListFragment {
       mAdapter = new JobsAdapter(getActivity(), mContainer.getId());
       setListAdapter(mAdapter);
     }
+
 
     // getListView().setOnItemClickListener(this);
 
@@ -71,7 +90,12 @@ public class JobListFragment extends ListFragment {
 
       @Override
       protected void onPostExecute(List<JSON.Job> jobs) {
-        mAdapter.addAll(jobs);
+        for (JSON.Job job : jobs) {
+          if (!mJobMap.containsKey(job.id)) {
+            mJobMap.put(job.id, true);
+            mAdapter.add(job);
+          }
+        }
       }
     }.execute();
 
@@ -109,10 +133,24 @@ class JobsAdapter extends ArrayAdapter<Job> {
     }
     //Get the text boxes
     TextView title =(TextView)vi.findViewById(R.id.title);
+    ImageView iview = (ImageView)vi.findViewById(R.id.imageView);
+    TextView description =(TextView)vi.findViewById(R.id.description);
+    TextView city =(TextView)vi.findViewById(R.id.city);
+    TextView date =(TextView)vi.findViewById(R.id.date);
+
+    Date d;
+    try {
+      d = Global.FULL_TIME_DATE_FORMAT.parse(job.end_date);
+    } catch (Exception e) {
+      d = new Date();
+    }
 
     // Assign the appropriate data from our task object above
     title.setText(job.title);
-
+    description.setText(job.description);
+    ImageLoader.getInstance().displayImage(job.picture_url, iview);
+    city.setText(job.city);
+    date.setText(Global.DATE_ONLY_FORMAT.format(d));
     return vi;
   }
 }
