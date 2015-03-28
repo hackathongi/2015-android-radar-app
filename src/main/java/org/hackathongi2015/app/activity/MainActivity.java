@@ -51,8 +51,8 @@ public class MainActivity extends SherlockFragmentActivity {
         };
 
         // Add the two tabs
-        abar.addTab(abar.newTab().setText("Job List").setTabListener(tabListener));
-        abar.addTab(abar.newTab().setText("Map").setTabListener(tabListener));
+        abar.addTab(abar.newTab().setText(getString(R.string.job_list)).setTabListener(tabListener));
+        abar.addTab(abar.newTab().setText(getString(R.string.map)).setTabListener(tabListener));
         mViewPager.setOnPageChangeListener(
 
         new ViewPager.SimpleOnPageChangeListener() {

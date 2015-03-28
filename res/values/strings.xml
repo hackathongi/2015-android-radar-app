@@ -10,6 +10,10 @@
     <string name="button_set">Set</string>
     <string name="time_limit">Time limit:</string><string name="button_save">Save</string>
     <string name="Apply">Apply</string>
+
+    <string name="job_list">Job list</string>
+    <string name="map">Map</string>
+
     <string name="action_search">Search</string>
     <string name="action_website">Website</string>
 
