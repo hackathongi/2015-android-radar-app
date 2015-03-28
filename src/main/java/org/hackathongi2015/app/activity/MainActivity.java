@@ -1,6 +1,7 @@
 package org.hackathongi2015.app.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import org.hackathongi2015.R;
 import org.hackathongi2015.app.adapter.CollectionPagerAdapter;
 import org.hackathongi2015.app.listener.MyLocationListener;
@@ -76,5 +78,21 @@ public class MainActivity extends SherlockFragmentActivity {
     // Inflate the menu items for use in the action bar
     getSupportMenuInflater().inflate(R.menu.main_activity_actions, menu);
     return super.onCreateOptionsMenu(menu);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle item selection
+    switch (item.getItemId()) {
+      case R.id.action_search:
+        return true;
+      case R.id.action_website:
+        Intent intent = new Intent(MainActivity.this, WallyWebView.class);
+        intent.putExtra("JOB_URL", "https://www.wallyjobs.com");
+        startActivity(intent);
+        return true;
+      default:
+        return false;
+    }
   }
 }
