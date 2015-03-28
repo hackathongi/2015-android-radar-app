@@ -7,8 +7,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-
-import android.view.MenuInflater;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -95,4 +93,6 @@ public class MainActivity extends SherlockFragmentActivity {
         return false;
     }
   }
+
+
 }
