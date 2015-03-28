@@ -22,7 +22,12 @@
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
           android:text="New Text"
-          android:id="@+id/title"/>
+          android:id="@+id/title" android:textStyle="bold"/>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="New Text"
+          android:id="@+id/owner"/>
       <RelativeLayout
           android:layout_width="fill_parent"
           android:layout_height="fill_parent">
@@ -46,7 +51,7 @@
       android:id="@+id/description"
       android:lines="2"
       android:ellipsize="none"
-      />
+      android:layout_margin="5dp"/>
   <Button
       android:layout_width="137dp"
       android:layout_height="wrap_content"

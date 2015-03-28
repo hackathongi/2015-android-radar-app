@@ -10,5 +10,6 @@
     <string name="button_set">Set</string>
     <string name="time_limit">Time limit:</string><string name="button_save">Save</string>
     <string name="Apply">Apply</string>
+    <string name="action_search">Search</string>
 
 </resources>
