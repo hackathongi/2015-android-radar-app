@@ -2,7 +2,6 @@ package org.hackathongi2015.app.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import org.hackathongi2015.app.adapter.CollectionPagerAdapter;

@@ -26,13 +26,13 @@ public class CollectionPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int i) {
         Fragment fragment = null;
-        switch (i) {
+        switch (i%2) {
             case 0: {
-                fragment = new JobListFragment();
+                fragment = new MapFragment();;
                 break;
             }
             case 1: {
-                fragment = new MapFragment();
+                fragment = new JobListFragment();;
             }
         }
         return fragment;
