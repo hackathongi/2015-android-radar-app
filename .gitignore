@@ -1,0 +1,7 @@
+.idea
+gen
+*.class
+target
+*.iml
+project.properties
+proguard-project.txt
