@@ -49,7 +49,7 @@ public class JobListFragment extends ListFragment {
     intent.putExtra("JOB_IMAGE_URL", job.picture_url);
     intent.putExtra("JOB_CITY", job.city);
     intent.putExtra("JOB_DATE", job.end_date);
-    intent.putExtra("JOB_JOB_URL", job.job_url);
+    intent.putExtra("JOB_JOB_URL", "https://landing.wallyjobs.com/"+job.id);
     intent.putExtra("JOB_NAME", job.owner.name);
 
     startActivity(intent);

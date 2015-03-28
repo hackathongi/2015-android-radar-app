@@ -55,7 +55,7 @@ public class JobDescription extends Activity {
     Button btn = (Button)vi.findViewById(R.id.btn_apply);
     btn.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
-        Intent intent = new Intent(JobDescription.this, LandingPage.class);
+        Intent intent = new Intent(JobDescription.this, WallyWebView.class);
         intent.putExtra("JOB_URL", extras.getString("JOB_JOB_URL"));
         startActivity(intent);
       }
